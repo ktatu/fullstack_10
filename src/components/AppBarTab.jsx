@@ -1,18 +1,19 @@
-import { Pressable, StyleSheet, Text } from "react-native"
+import { Pressable, StyleSheet } from "react-native"
+import Text from "./Text"
 
 const styles = StyleSheet.create({
     container: {
         padding: 10,
     },
     text: {
-        color: "#ffffff",
+        color: "white",
     },
 })
 
 const AppBarTab = ({ text }) => {
     return (
         <Pressable style={styles.container}>
-            <Text style={styles.text}>{text}</Text>
+            <Text style={{ color: "white" }}>{text}</Text>
         </Pressable>
     )
 }
