@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet } from "react-native"
 import Text from "./Text"
+import { Link } from "react-router-native"
 
 const styles = StyleSheet.create({
     container: {
@@ -7,15 +8,17 @@ const styles = StyleSheet.create({
     },
 })
 
-const AppBarTab = ({ text }) => {
+const AppBarTab = ({ text, link }) => {
     return (
         <Pressable style={styles.container}>
-            <Text
-                fontWeight="bold"
-                style={{ color: "white" }}
-            >
-                {text}
-            </Text>
+            <Link to={link}>
+                <Text
+                    fontWeight="bold"
+                    color="white"
+                >
+                    {text}
+                </Text>
+            </Link>
         </Pressable>
     )
 }

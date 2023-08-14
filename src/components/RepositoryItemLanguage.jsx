@@ -14,7 +14,7 @@ const RepositoryItemLanguage = ({ language }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={{ color: "white" }}>{language}</Text>
+            <Text color="white">{language}</Text>
         </View>
     )
 }
