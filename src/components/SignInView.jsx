@@ -3,6 +3,7 @@ import Text from "./Text"
 import { Pressable, StyleSheet, View } from "react-native"
 import { Formik } from "formik"
 import theme from "../theme"
+import * as yup from "yup"
 
 const SignInView = () => {
     const styles = StyleSheet.create({
@@ -23,6 +24,20 @@ const SignInView = () => {
         },
     })
 
+    const validationSchema = yup.object().shape({
+        username: yup
+            .string()
+            .min(3, "Minimum length of username is 3")
+            .max(25, "Maximum length of username is 25")
+            .required("Username is required"),
+
+        password: yup
+            .string()
+            .min(3, "Minimum length of password is 3")
+            .max(25, "Maximum length of password is 25")
+            .required("Password is required"),
+    })
+
     const onSubmit = () => {
         console.log("submit")
     }
@@ -32,6 +47,7 @@ const SignInView = () => {
             <Formik
                 initialValues={{ username: "", password: "" }}
                 onSubmit={onSubmit}
+                validationSchema={validationSchema}
             >
                 {({ handleSubmit }) => (
                     <View style={styles.container}>
