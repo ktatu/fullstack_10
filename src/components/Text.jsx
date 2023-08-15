@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
     fontWeightBold: {
         fontWeight: theme.fontWeights.bold,
     },
+    fontFamily: {
+        fontFamily: theme.fonts.main,
+    },
 })
 
 const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
@@ -41,5 +44,15 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
         />
     )
 }
+
+/*
+    text: {
+        color: theme.colors.textPrimary,
+        fontSize: theme.fontSizes.body,
+        fontFamily: theme.fonts.main,
+        fontWeight: theme.fontWeights.normal,
+    },
+
+*/
 
 export default Text
