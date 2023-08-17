@@ -1,8 +1,8 @@
 import FormikTextInput from "./FormikTextInput"
-import Text from "./Text"
+import Text from "../Text"
 import { Pressable, StyleSheet, View } from "react-native"
 import { Formik } from "formik"
-import theme from "../theme"
+import theme from "../../theme"
 import * as yup from "yup"
 
 const SignInView = () => {

@@ -1,5 +1,5 @@
 import { Image, StyleSheet, View } from "react-native"
-import Text from "./Text"
+import Text from "../Text"
 import RepositoryItemLanguage from "./RepositoryItemLanguage"
 
 const RepositoryItemInfo = ({ fullName, description, language, ownerAvatarUrl }) => {

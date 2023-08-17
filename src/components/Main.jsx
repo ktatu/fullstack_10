@@ -4,7 +4,7 @@ import RepositoryList from "./RepositoryList"
 import { Route, Routes, Navigate } from "react-router-native"
 import AppBar from "./AppBar"
 import theme from "../theme"
-import SignInView from "./SignInView"
+import SignInView from "./SignIn/SignIn"
 
 const styles = StyleSheet.create({
     container: {
