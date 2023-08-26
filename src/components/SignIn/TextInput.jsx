@@ -19,8 +19,6 @@ const TextInput = ({ style, error, ...props }) => {
         ? [style, styles.basic, styles.borderErrorColor]
         : [style, styles.basic, styles.borderColor]
 
-    console.log("text input error ", error)
-
     return (
         <NativeTextInput
             style={textInputStyle}
