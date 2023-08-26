@@ -5,9 +5,11 @@ import { Formik } from "formik"
 import theme from "../../theme"
 import * as yup from "yup"
 import useSignIn from "../../hooks/useSignIn"
+import { useNavigate } from "react-router-native"
 
 const SignInView = () => {
     const [signIn] = useSignIn()
+    const navigate = useNavigate()
 
     const styles = StyleSheet.create({
         container: {
@@ -46,7 +48,9 @@ const SignInView = () => {
 
         try {
             const { data } = await signIn({ username, password })
-            console.log(data)
+            if (data) {
+                navigate("/")
+            }
         } catch (e) {
             console.log(e)
         }
