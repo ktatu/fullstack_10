@@ -8,9 +8,12 @@ const styles = StyleSheet.create({
     },
 })
 
-const AppBarTab = ({ text, link }) => {
+const AppBarTab = ({ text, link, handlePress }) => {
     return (
-        <Pressable style={styles.container}>
+        <Pressable
+            style={styles.container}
+            onPress={handlePress}
+        >
             <Link to={link}>
                 <Text
                     fontWeight="bold"
