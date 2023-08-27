@@ -11,6 +11,23 @@ const SignInView = () => {
     const [signIn] = useSignIn()
     const navigate = useNavigate()
 
+    const onSubmit = async (values) => {
+        const { username, password } = values
+
+        try {
+            const { data } = await signIn({ username, password })
+            if (data) {
+                navigate("/")
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    return <SignInViewContainer onSubmit={onSubmit} />
+}
+
+export const SignInViewContainer = ({ onSubmit }) => {
     const styles = StyleSheet.create({
         container: {
             display: "flex",
@@ -42,19 +59,6 @@ const SignInView = () => {
             .max(25, "Maximum length of password is 25")
             .required("Password is required"),
     })
-
-    const onSubmit = async (values) => {
-        const { username, password } = values
-
-        try {
-            const { data } = await signIn({ username, password })
-            if (data) {
-                navigate("/")
-            }
-        } catch (e) {
-            console.log(e)
-        }
-    }
 
     return (
         <View>
