@@ -21,6 +21,6 @@ const RepositoryItemStatistic = ({ descriptor, statistic }) => {
     )
 }
 
-const roundStatistic = (statistic) => parseFloat(Number(statistic / 1000).toFixed(1)) + "K"
+export const roundStatistic = (statistic) => parseFloat(Number(statistic / 1000).toFixed(1)) + "K"
 
 export default RepositoryItemStatistic

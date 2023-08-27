@@ -16,7 +16,10 @@ const RepositoryItem = (props) => {
     })
 
     return (
-        <View style={styles.container}>
+        <View
+            testID="repositoryItem"
+            style={styles.container}
+        >
             <RepositoryItemInfo
                 description={item.description}
                 fullName={item.fullName}
