@@ -12,7 +12,6 @@ describe("SignIn", () => {
             fireEvent.press(screen.getByText("Sign in"))
 
             await waitFor(() => {
-                // expect the onSubmit function to have been called once and with a correct first argument
                 expect(onSubmit.mock.calls[0][0]).toEqual({
                     username: "kalle",
                     password: "password",

@@ -5,6 +5,7 @@ import { Route, Routes, Navigate } from "react-router-native"
 import AppBar from "./AppBar"
 import theme from "../theme"
 import SignInView from "./SignIn/SignIn"
+import RepositoryView from "./RepositoryView"
 
 const styles = StyleSheet.create({
     container: {
@@ -27,6 +28,11 @@ const Main = () => {
                 <Route
                     path="/signin"
                     element={<SignInView />}
+                    exact
+                />
+                <Route
+                    path="/repositories/:repositoryId"
+                    element={<RepositoryView />}
                     exact
                 />
                 <Route

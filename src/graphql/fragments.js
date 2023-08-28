@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client"
 
-export const REPOSITORY_LIST_FIELDS = gql`
-    fragment RepositoryListFields on Repository {
+export const REPOSITORY_FIELDS = gql`
+    fragment RepositoryFields on Repository {
         id
         reviewCount
         stargazersCount
@@ -11,5 +11,6 @@ export const REPOSITORY_LIST_FIELDS = gql`
         fullName
         language
         ownerAvatarUrl
+        url
     }
 `
