@@ -58,17 +58,19 @@ const RepositoryItem = (props) => {
                     statistic={item.ratingAverage}
                 />
             </RepositoryItemStatisticsList>
-            <View style={styles.repositoryLinkButton}>
-                <Pressable onPress={() => openURL(item.url)}>
-                    <Text
-                        color="white"
-                        fontWeight="bold"
-                        style={{ alignSelf: "center" }}
-                    >
-                        Open in GitHub
-                    </Text>
-                </Pressable>
-            </View>
+            {props.repositoryView && (
+                <View style={styles.repositoryLinkButton}>
+                    <Pressable onPress={() => openURL(item.url)}>
+                        <Text
+                            color="white"
+                            fontWeight="bold"
+                            style={{ alignSelf: "center" }}
+                        >
+                            Open in GitHub
+                        </Text>
+                    </Pressable>
+                </View>
+            )}
         </View>
     )
 }

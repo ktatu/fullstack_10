@@ -5,6 +5,9 @@ import { Pressable } from "react-native"
 import { useNavigate } from "react-router-native"
 
 const styles = StyleSheet.create({
+    container: {
+        flexShrink: 1,
+    },
     separator: {
         height: 10,
     },
@@ -17,7 +20,7 @@ export const RepositoryListContainer = ({ repositories }) => {
     const navigate = useNavigate()
 
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList
                 data={repositoryNodes}
                 ItemSeparatorComponent={ItemSeparator}
