@@ -18,25 +18,26 @@ const RepositoryView = () => {
         return <Text>Loading...</Text>
     }
 
-    const reviewNodes = repository ? repository.reviews.edges.map((edge) => edge.node) : []
+    if (repository) {
+        const reviewNodes = repository ? repository.reviews.edges.map((edge) => edge.node) : []
+        return (
+            <View style={styles.container}>
+                <FlatList
+                    data={reviewNodes}
+                    ListHeaderComponent={
+                        <RepositoryItem
+                            item={repository}
+                            repositoryView={true}
+                        />
+                    }
+                    keyExtractor={(review) => review.id}
+                    renderItem={({ item }) => <Review review={item} />}
+                />
+            </View>
+        )
+    }
 
-    //console.log("review nodes ", reviewNodes)
-
-    return (
-        <View style={styles.container}>
-            <FlatList
-                data={reviewNodes}
-                ListHeaderComponent={
-                    <RepositoryItem
-                        item={repository}
-                        repositoryView={true}
-                    />
-                }
-                keyExtractor={(review) => review.id}
-                renderItem={({ item }) => <Review review={item} />}
-            />
-        </View>
-    )
+    return <Text>Unexpected error</Text>
 }
 
 export default RepositoryView

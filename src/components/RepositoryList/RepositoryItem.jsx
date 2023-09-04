@@ -1,10 +1,10 @@
+import { openURL } from "expo-linking"
 import { Pressable, StyleSheet, View } from "react-native"
+import theme from "../../theme"
+import Text from "../Text"
 import RepositoryItemInfo from "./RepositoryItemInfo"
 import RepositoryItemStatistic from "./RepositoryItemStatistic"
 import RepositoryItemStatisticsList from "./RepositoryItemStatisticsList"
-import theme from "../../theme"
-import Text from "../Text"
-import { openURL } from "expo-linking"
 
 const RepositoryItem = (props) => {
     const item = props.item

@@ -1,11 +1,12 @@
 //import Constants from "expo-constants"
 import { StyleSheet, View } from "react-native"
-import RepositoryList from "./RepositoryList"
-import { Route, Routes, Navigate } from "react-router-native"
-import AppBar from "./AppBar"
+import { Navigate, Route, Routes } from "react-router-native"
 import theme from "../theme"
-import SignInView from "./SignIn/SignIn"
+import AppBar from "./AppBar"
+import CreateReviewView from "./CreateReviewView"
+import RepositoryList from "./RepositoryList"
 import RepositoryView from "./RepositoryView"
+import SignInView from "./SignIn/SignIn"
 
 const styles = StyleSheet.create({
     container: {
@@ -33,6 +34,11 @@ const Main = () => {
                 <Route
                     path="/repositories/:repositoryId"
                     element={<RepositoryView />}
+                    exact
+                />
+                <Route
+                    path="/createreview"
+                    element={<CreateReviewView />}
                     exact
                 />
                 <Route
