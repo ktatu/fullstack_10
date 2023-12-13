@@ -19,6 +19,7 @@ const AppBar = () => {
     const signOut = useSignOut()
 
     const handleSignOut = async () => {
+        console.log("sign out")
         await signOut()
     }
 
@@ -34,10 +35,16 @@ const AppBar = () => {
                     link="createreview"
                 />
                 {!data || !data.me ? (
-                    <AppBarTab
-                        text="Sign In"
-                        link="signin"
-                    />
+                    <>
+                        <AppBarTab
+                            text="Sign In"
+                            link="signin"
+                        />
+                        <AppBarTab
+                            text="Sign Up"
+                            link="signup"
+                        />
+                    </>
                 ) : (
                     <AppBarTab
                         text="Sign Out"

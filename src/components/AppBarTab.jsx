@@ -1,28 +1,41 @@
-import { Pressable, StyleSheet } from "react-native"
-import Text from "./Text"
+import { Pressable, StyleSheet, View } from "react-native"
 import { Link } from "react-router-native"
+import Text from "./Text"
 
 const styles = StyleSheet.create({
     container: {
         padding: 10,
     },
+    text: {
+        fontWeight: "bold",
+        color: "white",
+    },
 })
 
 const AppBarTab = ({ text, link, handlePress }) => {
+    if (link) {
+        return (
+            <View style={styles.container}>
+                <Link to={link}>
+                    <Text style={styles.text}>{text}</Text>
+                </Link>
+            </View>
+        )
+    }
     return (
-        <Pressable
-            style={styles.container}
-            onPress={handlePress}
-        >
-            <Link to={link}>
+        <View style={styles.container}>
+            <Pressable
+                onPress={handlePress}
+                style={styles.text}
+            >
                 <Text
                     fontWeight="bold"
                     color="white"
                 >
                     {text}
                 </Text>
-            </Link>
-        </Pressable>
+            </Pressable>
+        </View>
     )
 }
 

@@ -16,6 +16,14 @@ export const ADD_REVIEW = gql`
     }
 `
 
+export const ADD_USER = gql`
+    mutation CreateUser($user: CreateUserInput) {
+        createUser(user: $user) {
+            id
+        }
+    }
+`
+
 // eslint-disable-next-line
 const AUTHENTICATE_INPUT = gql`
     input AuthenticateInput {
@@ -30,5 +38,13 @@ const REVIEW = gql`
         rating: Int!
         repositoryName: String!
         text: String
+    }
+`
+
+// eslint-disable-next-line
+const USER_INPUT = gql`
+    input CreateUserInput {
+        password: String!
+        username: String!
     }
 `
