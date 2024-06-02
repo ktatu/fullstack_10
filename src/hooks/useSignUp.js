@@ -16,7 +16,7 @@ const useSignUp = () => {
 
         await apolloClient.resetStore()
 
-        return result
+        return data
     }
 
     return [signUp, result]
