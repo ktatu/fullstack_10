@@ -16,12 +16,10 @@ const SignInView = () => {
         const { username, password } = values
 
         try {
-            const { data } = await signIn({ username, password })
-            if (data) {
-                navigate("/")
-            }
+            await signIn({ username, password })
+            navigate("/")
         } catch (e) {
-            console.log(e)
+            console.log("Unable to sign in: " + e)
         }
     }
 
