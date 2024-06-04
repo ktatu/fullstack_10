@@ -23,6 +23,8 @@ const AppBar = () => {
         await signOut()
     }
 
+    const signedIn = data && data.me
+
     return (
         <View style={styles.container}>
             <ScrollView horizontal>
@@ -30,11 +32,17 @@ const AppBar = () => {
                     text="Repositories"
                     link="/"
                 />
+                {signedIn && (
+                    <AppBarTab
+                        text="My reviews"
+                        link="myreviews"
+                    />
+                )}
                 <AppBarTab
                     text="Create a review"
                     link="createreview"
                 />
-                {!data || !data.me ? (
+                {!signedIn && (
                     <>
                         <AppBarTab
                             text="Sign In"
@@ -45,7 +53,8 @@ const AppBar = () => {
                             link="signup"
                         />
                     </>
-                ) : (
+                )}
+                {signedIn && (
                     <AppBarTab
                         text="Sign Out"
                         handlePress={handleSignOut}

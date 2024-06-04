@@ -49,7 +49,7 @@ const Review = ({ review }) => {
                     style={styles.reviewContentContainerItem}
                     fontWeight="bold"
                 >
-                    {review.user.username}
+                    {review.user ? review.user.username : review.repository.fullName}
                 </Text>
                 <Text style={styles.reviewContentContainerItem}>{formattedDate}</Text>
                 <Text style={{ flexShrink: 1 }}>{review.text}</Text>
