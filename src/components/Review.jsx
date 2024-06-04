@@ -1,7 +1,7 @@
-import { View, StyleSheet } from "react-native"
-import Text from "./Text"
-import theme from "../theme"
 import { format } from "date-fns"
+import { StyleSheet, View } from "react-native"
+import theme from "../theme"
+import Text from "./Text"
 
 const Review = ({ review }) => {
     const styles = StyleSheet.create({
@@ -41,7 +41,7 @@ const Review = ({ review }) => {
                     fontWeight="bold"
                     color="primary"
                 >
-                    80
+                    {review.rating}
                 </Text>
             </View>
             <View style={styles.reviewContentContainer}>
