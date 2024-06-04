@@ -1,8 +1,9 @@
-import { FlatList, View, StyleSheet } from "react-native"
-import RepositoryItem from "./RepositoryItem"
-import useRepositories from "../../hooks/useRepositories"
-import { Pressable } from "react-native"
+import { useState } from "react"
+import { FlatList, Pressable, StyleSheet, View } from "react-native"
 import { useNavigate } from "react-router-native"
+import useRepositories from "../../hooks/useRepositories"
+import RepositoryItem from "./RepositoryItem"
+import SortMenu from "./SortMenu"
 
 const styles = StyleSheet.create({
     container: {
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />
 
-export const RepositoryListContainer = ({ repositories }) => {
+export const RepositoryListContainer = ({ repositories, handleSort }) => {
     const repositoryNodes = repositories ? repositories.edges.map((edge) => edge.node) : []
     const navigate = useNavigate()
 
@@ -30,15 +31,36 @@ export const RepositoryListContainer = ({ repositories }) => {
                         <RepositoryItem item={item} />
                     </Pressable>
                 )}
+                ListHeaderComponent={<SortMenu handleSort={handleSort} />}
             />
         </View>
     )
 }
 
 const RepositoryList = () => {
-    const { repositories } = useRepositories()
+    const [orderBy, setOrderBy] = useState("CREATED_AT")
+    const [orderDirection, setOrderDirection] = useState("DESC")
+    const { repositories } = useRepositories(orderBy, orderDirection)
 
-    return <RepositoryListContainer repositories={repositories} />
+    const handleSort = (sortMethod) => {
+        if (sortMethod === "Latest repositories") {
+            setOrderBy("CREATED_AT")
+            setOrderDirection("DESC")
+        } else if (sortMethod === "Highest rated repositories") {
+            setOrderBy("RATING_AVERAGE")
+            setOrderDirection("DESC")
+        } else if (sortMethod === "Lowest rated repositories") {
+            setOrderBy("RATING_AVERAGE")
+            setOrderDirection("ASC")
+        }
+    }
+
+    return (
+        <RepositoryListContainer
+            repositories={repositories}
+            handleSort={handleSort}
+        />
+    )
 }
 
 export default RepositoryList

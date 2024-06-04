@@ -1,4 +1,5 @@
 import { StyleSheet, View } from "react-native"
+import { PaperProvider } from "react-native-paper"
 import { Navigate, Route, Routes } from "react-router-native"
 import theme from "../theme"
 import AppBar from "./AppBar"
@@ -18,45 +19,47 @@ const styles = StyleSheet.create({
 
 const Main = () => {
     return (
-        <View style={styles.container}>
-            <AppBar />
-            <Routes>
-                <Route
-                    path="/"
-                    element={<RepositoryList />}
-                    exact
-                />
-                <Route
-                    path="/signin"
-                    element={<SignInView />}
-                    exact
-                />
-                <Route
-                    path="/signup"
-                    element={<SignUpView />}
-                    exact
-                />
-                <Route
-                    path="/repositories/:repositoryId"
-                    element={<RepositoryView />}
-                    exact
-                />
-                <Route
-                    path="/createreview"
-                    element={<CreateReviewView />}
-                    exact
-                />
-                <Route
-                    path="*"
-                    element={
-                        <Navigate
-                            to="/"
-                            replace
-                        />
-                    }
-                />
-            </Routes>
-        </View>
+        <PaperProvider>
+            <View style={styles.container}>
+                <AppBar />
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<RepositoryList />}
+                        exact
+                    />
+                    <Route
+                        path="/signin"
+                        element={<SignInView />}
+                        exact
+                    />
+                    <Route
+                        path="/signup"
+                        element={<SignUpView />}
+                        exact
+                    />
+                    <Route
+                        path="/repositories/:repositoryId"
+                        element={<RepositoryView />}
+                        exact
+                    />
+                    <Route
+                        path="/createreview"
+                        element={<CreateReviewView />}
+                        exact
+                    />
+                    <Route
+                        path="*"
+                        element={
+                            <Navigate
+                                to="/"
+                                replace
+                            />
+                        }
+                    />
+                </Routes>
+            </View>
+        </PaperProvider>
     )
 }
 

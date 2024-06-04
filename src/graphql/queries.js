@@ -13,6 +13,19 @@ export const GET_REPOSITORIES = gql`
         }
     }
 `
+export const GET_REPOSITORIES2 = gql`
+    ${REPOSITORY_FIELDS}
+    query repositories($orderDirection: OrderDirection, $orderBy: AllRepositoriesOrderBy) {
+        repositories(orderDirection: $orderDirection, orderBy: $orderBy) {
+            edges {
+                node {
+                    ...RepositoryFields
+                }
+            }
+        }
+    }
+`
+
 export const GET_REPOSITORY = gql`
     ${REPOSITORY_FIELDS}
     query repository($id: ID!) {
