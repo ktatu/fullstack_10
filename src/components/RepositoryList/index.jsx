@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { FlatList, Pressable, StyleSheet, View } from "react-native"
+import { Searchbar } from "react-native-paper"
 import { useNavigate } from "react-router-native"
+import { useDebounce } from "use-debounce"
 import useRepositories from "../../hooks/useRepositories"
 import RepositoryItem from "./RepositoryItem"
 import SortMenu from "./SortMenu"
@@ -12,11 +14,19 @@ const styles = StyleSheet.create({
     separator: {
         height: 10,
     },
+    headerContainer: {
+        padding: 10,
+    },
 })
 
 const ItemSeparator = () => <View style={styles.separator} />
 
-export const RepositoryListContainer = ({ repositories, handleSort }) => {
+export const RepositoryListContainer = ({
+    repositories,
+    handleSort,
+    searchValue,
+    setSearchValue,
+}) => {
     const repositoryNodes = repositories ? repositories.edges.map((edge) => edge.node) : []
     const navigate = useNavigate()
 
@@ -31,16 +41,29 @@ export const RepositoryListContainer = ({ repositories, handleSort }) => {
                         <RepositoryItem item={item} />
                     </Pressable>
                 )}
-                ListHeaderComponent={<SortMenu handleSort={handleSort} />}
+                ListHeaderComponent={
+                    <View style={styles.headerContainer}>
+                        <Searchbar
+                            placeholder="Filter repositories"
+                            value={searchValue}
+                            onChangeText={setSearchValue}
+                        />
+                        <SortMenu handleSort={handleSort} />
+                    </View>
+                }
             />
         </View>
     )
 }
 
 const RepositoryList = () => {
+    const [searchValue, setSearchValue] = useState("")
+    const [debouncedValue] = useDebounce(searchValue, 100)
+
     const [orderBy, setOrderBy] = useState("CREATED_AT")
     const [orderDirection, setOrderDirection] = useState("DESC")
-    const { repositories } = useRepositories(orderBy, orderDirection)
+
+    const { repositories } = useRepositories(orderBy, orderDirection, debouncedValue)
 
     const handleSort = (sortMethod) => {
         if (sortMethod === "Latest repositories") {
@@ -59,6 +82,8 @@ const RepositoryList = () => {
         <RepositoryListContainer
             repositories={repositories}
             handleSort={handleSort}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
         />
     )
 }

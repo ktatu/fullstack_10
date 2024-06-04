@@ -31,7 +31,12 @@ const SortMenu = ({ handleSort }) => {
 
     return (
         <View style={styles.container}>
-            <Text fontSize="subheading">{sortMethod}</Text>
+            <Text
+                fontSize="subheading"
+                fontWeight="bold"
+            >
+                {sortMethod}
+            </Text>
             <Menu
                 style={styles.menu}
                 visible={visible}
